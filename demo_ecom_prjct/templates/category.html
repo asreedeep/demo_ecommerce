@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .demo {
+        height: 70px; /* Set the desired height for the scrollable area */
+        overflow-y: auto; /* Enable vertical scrollbar */
+    }
+</style>
+<div>
+    <img src="{% static 'image/img_1.png' %}" height="400px" width="100%">
+</div><br>
+<div class="container-fluid fs-3">
+    <h3 class="text-center fw-bold fs-1">Our Collections</h3>
+    <p  style="text-align:justify;padding:50px;">A website that allows people to buy and sell physical goods, services, and digital products over the internet rather than at a brick-and-mortar location.
+    Through an e-commerce website, a business can process orders, accept payments, manage shipping and logistics, and provide customer service.</p>
+</div>
+<div class="container-fluid">
+    <div class="row" style="padding-bottom:100px" >
+        {% for i in c %}
+        <div class="col-sm-4">
+            <div class="card" style="width:auto; height:auto;">
+                <img src="{{i.image.url}}" class="card-img-top" alt="..." height="230px" >
+                <div class="card-body">
+                    <center><h5 class="card-title"><b>{{i.name}}</b></h5></center>
+                    <div class="text-center">
+                    <p class="card-text demo">{{i.desc}}</p>
+                    <a href="{% url 'shop:allproducts' i.name %}" class="btn btn-primary" style="width:200px;margin:auto; ">Products</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div>
+    <img src="{% static 'image/img_2.png' %}" height="400px" width="100%">
+</div><br><br><br><br>
+{% endblock %}

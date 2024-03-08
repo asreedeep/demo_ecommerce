@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<table class="table table-bordered">
+    <tr><h1>Name of the Customer:{{user.username}}</h1></tr>
+
+    <tr><th>product_name:</th>
+        <th>product_price:</th>
+        <th>delivery_address:</th>
+        <th>phone:</th>
+        <th>no_of_items:</th>
+        <th>ordered on:</th>
+        <th>delivery_status:</th>
+    </tr>
+    {% for i in o %}
+    <tr>
+        <td>{{i.product.name}}</td>
+        <td>{{i.product.price}}</td>
+        <td>{{i.address}}</td>
+        <td>{{i.phone}}</td>
+        <td>{{i.no_of_items}}</td>
+        <td>{{i.ordered_date}}</td>
+        <td>{{i.delivery_status}}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

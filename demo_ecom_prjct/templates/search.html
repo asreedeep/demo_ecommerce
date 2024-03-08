@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h4>searched query is :{{q}}</h4>
+<div class="container">
+    {% if b %}
+    <div class="row justify-content-center" style="padding-bottom:100px">
+        {% for i in b %}
+        <div class="col-sm-4 ">
+            <div class="card" style="width: 21rem;">
+                <img src="{{i.image.url}}" class="card-img-top" alt="..." height="230px" >
+                <div class="card-body">
+                    <center><h5 class="card-title"><b>{{i.name}}</b></h5></center>
+                    <p class="card-text">{{i.desc}}</p>
+                    <a href="{% url 'shop:detail' i.name %}" class="btn btn-primary" style="width:200px;margin-left:50px;">Products</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div>
+        <p>no result founded</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
